@@ -9,13 +9,16 @@
 3.0 - Generic: reset and/or normalize styles, box-sizing definition, etc.
         - Universal
 4.0 - Elements: styling for bare/generic HTML elements 
+        - Typography 
         
 5.0 - Objects: class-based selectors which define undecorated design patterns, building blocks
         - Framework
 6.0 - Components: specific designed components
+        - Hero
+        - Header
+        _ Footer
        
 7.0 - Utilities: utilities and helper classes with ability to override anything which goes before in the triangle, eg. hide helper class
-        - screen reader
         - alignment	    
 --------------------------------------------------------------*/
 
@@ -42,10 +45,7 @@
 }
 
 html {
-        font-family: 'Roboto Slab', serif;
-        line-height: 1.8em;
-        font-size: 1rem;
-        font-weight: 400;
+        font: 400 1rem/1.8em 'Roboto Slab', serif;
         
 }
 
@@ -92,21 +92,6 @@ a:hover {
 }
 
 
-
-header > div:last-child > div div,
-#systems > div:first-child,
-#benefits header{
-        margin: 0 auto;
-}
-
-body > header,
-#layout > section:first-child,
-#benefits,
-footer {
-        text-align: center;
-}
-
-
 /* ----- Typography ----- */
 
 h1 {
@@ -135,18 +120,38 @@ span {
         font-size: 2.5rem;
 }
 
-body > header p {
-        font-size: 1.3rem;
-        line-height: 1.8em;
+img {
+        width: 90px; 
+        height: auto;
+        margin-top: 1.3em;
 }
 
-header .row {
-        align-items: center;
+a {
+        text-decoration: none;
+      
 }
 
+a:hover {
+        background-color: #FFD8DB;
+        padding:7px;
+        border-radius: 15px;
+
+}
+
+ul {
+        list-style-type: none;
+        padding: 0;
+        margin-top: 0;
+}
 
 
 @media screen and (min-width: 768px) {
+
+        #systems,
+        #layout > section:last-child,
+        #testing div:last-child {
+                text-align: center;
+        }
 
 }
 
@@ -154,12 +159,10 @@ header .row {
 
 
         #benefits section,
-        footer {
+        footer,
+        #layout > section:last-child,
+        #testing div:last-child  {
                 text-align: left;
-        }
-
-        #systems {
-                text-align: center;
         }
 
         h1 {
@@ -179,29 +182,6 @@ header .row {
     5.0 - OBJECTS
 -------------------------------------------------------------- */
 
-footer .row,
-#layout {
-        flex-direction: row-reverse;
-}
-
-#systems,
-#benefits,
-footer,
-#layout > section,
-#testing {
-        margin-top: 4em;
-}
-
-#systems .row section {
-        align-content: flex-start;
-}
-
-
-#layout > section:first-child {
-        flex-direction: column;
-        justify-content: center;
-        padding: 20px;
-}
 
 /* ----- Framework ----- */
 
@@ -424,57 +404,71 @@ footer,
 6.0 - COMPONENTS
 -------------------------------------------------------------- */
 
+header > div:last-child > div div,
+#systems > div:first-child,
+#benefits header{
+        margin: 0 auto;
+}
+
+body > header,
+#layout > section:first-child,
+#benefits,
+footer {
+        text-align: center;
+}
+
 header > div:last-child,
 #layout > section:first-child  {
         background-color: #FFD8DB;
 }
 
-img {
-        width: 90px; 
-        height: auto;
-        margin-top: 1.3em;
+footer .row,
+#layout {
+        flex-direction: row-reverse;
+}
+
+#systems,
+#benefits,
+footer,
+#layout > section,
+#testing {
+        margin-top: 4em;
+}
+
+#systems .row section {
+        align-content: flex-start;
 }
 
 
-/* ----- nav ----- */
-
-a {
-        text-decoration: none;
-      
+#layout > section:first-child {
+        flex-direction: column;
+        justify-content: center;
+        padding: 20px;
 }
 
-a:hover {
-        background-color: #FFD8DB;
-        padding:7px;
-        border-radius: 4px;
+/* -----hero ----- */
 
+body > header p {
+        font-size: 1.3rem;
+        line-height: 1.8em;
 }
 
-ul {
-        list-style-type: none;
-        padding: 0;
-        margin-top: 0;
-}
+/* -----header ----- */
 
+header .row {
+        align-items: center;
+}
 
 header li {
         display: inline-block;
         margin-left: 1em;
 }
 
-footer li {
-        margin-bottom: 1em;
-}
-
-
-
-/* -----header ----- */
-
 header > div:first-child {
         border-bottom: #FFD8DB solid 4px;
         position: fixed;
         width: 100%;
-        background-color: white;
+        background-color: #fff;
         top: 0;
         left: 0;
 
@@ -491,16 +485,22 @@ header div:last-child .wrapper  {
         -o-background-size: contain;
         -ms-background-size: contain;
         background-size: contain;
-        padding: 20px 0px;
+        padding: 3em 0px;
 }
 
 
 
 
 /* -----footer----- */
+
+
+footer li {
+        margin-bottom: 1em;
+}
+
 footer {
         border-top: #FFD8DB solid 6px;
-        padding: 15px;
+        padding: 3em 0px;
 
 }
 
@@ -523,26 +523,23 @@ footer p {
         header nav {
                 text-align: right;
         }
+
+        footer img {
+                margin-top: 0;
+        }
+
+        footer {
+                text-align: left;
+        }
+
+        footer ul {
+                margin-left: 3em;
+        }
 }
 
 /*--------------------------------------------------------------
 7.0 - UTILITY
 -------------------------------------------------------------- */
-
-/* ----- Screen reader ----- */
-
-.sr-only {
-        position: absolute;
-        position: absolute !important;
-        width: 1px !important;
-        height: 1px !important;
-        padding: 0 !important;
-        margin: -1px !important;
-        overflow: hidden !important;
-        clip: rect(0,0,0,0) !important;
-        white-space: nowrap !important;
-        border: 0 !important;
-  }
 
 
 /* ----- alignment ----- */
